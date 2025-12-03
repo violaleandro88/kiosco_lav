@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Productos</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Productos</h1>
+  <nav>
+    <a class="button back" th:href="@{/}">Inicio</a>
+    <a class="button" th:href="@{/productos/alta}">Nuevo Producto</a>
+  </nav>
+  <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
+  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+  <table>
+    <thead><tr><th>ID</th><th>Nombre</th><th>Compra</th><th>Venta</th><th>Stock</th><th>Acciones</th></tr></thead>
+    <tbody>
+      <tr th:each="p : ${productos}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.nombre}"></td>
+        <td th:text="'$ ' + ${#numbers.formatDecimal(p.precioCompra, 0, 'POINT', 2, 'COMMA')}"></td>
+        <td th:text="'$ ' + ${#numbers.formatDecimal(p.precioVenta, 0, 'POINT', 2, 'COMMA')}"></td>
+        <td th:text="${p.stock}"></td>
+        <td class="actions">
+          <a class="button edit" th:href="@{/productos/editar(id=${p.id})}">Editar</a>
+          <a class="button delete" th:href="@{/productos/eliminar(id=${p.id})}" onclick="return confirm('¿Eliminar producto?')">Eliminar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

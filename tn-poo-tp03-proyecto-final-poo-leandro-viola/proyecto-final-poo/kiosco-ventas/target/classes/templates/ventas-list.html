@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Ventas</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Ventas</h1>
+  <nav>
+    <a class="button back" th:href="@{/}">Inicio</a>
+    <a class="button" th:href="@{/ventas/alta}">Nueva Venta</a>
+  </nav>
+  <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
+  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+
+  <table>
+    <thead><tr><th>ID</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Total</th><th>Acciones</th></tr></thead>
+    <tbody>
+      <tr th:each="v : ${ventas}">
+        <td th:text="${v.id}"></td>
+
+        <td th:text="${clientesDisplay[v.idCliente]}"></td>
+        <td th:text="${#temporals.format(v.fecha, 'dd/MM/yyyy HH:mm')}"></td>
+        <td>
+          <span th:text="${v.estado}"
+                th:class="'estado estado-' + ${v.estado}">
+          </span>
+        </td>
+        <td th:text="'$ ' + ${#numbers.formatDecimal(v.total, 0, 'POINT', 2, 'COMMA')}"></td>
+
+        <td class="actions">
+          <a class="button" th:href="@{/ventas/detalle(id=${v.id})}">Detalle</a>
+          <a class="button delete"
+             th:href="@{/ventas/eliminar(id=${v.id})}"
+             onclick="return confirm('¿Eliminar venta?')">
+            Eliminar
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Editar Cliente</h1>
+  <nav>
+    <a class="button back" th:href="@{/clientes}">Volver</a>
+  </nav>
+  <form th:action="@{/clientes/actualizar}" method="post">
+    <input type="hidden" name="id" th:value="${cliente.id}"/>
+    <div><label>Nombre</label><input type="text" name="nombre" th:value="${cliente.nombre}" required/></div>
+    <div><label>Apellido</label><input type="text" name="apellido" th:value="${cliente.apellido}" required/></div>
+    <div><label>DNI</label><input type="text" name="dni" th:value="${cliente.dni}" required/></div>
+    <div><label>Email</label><input type="text" name="email" th:value="${cliente.email}"/></div>
+    <div><label>Teléfono</label><input type="text" name="telefono" th:value="${cliente.telefono}"/></div>
+    <div><label>Activo</label><input type="checkbox" name="activo" th:checked="${cliente.activo}"/></div>
+    <button class="button" type="submit">Actualizar</button>
+  </form>
+</div>
+</body>
+</html>

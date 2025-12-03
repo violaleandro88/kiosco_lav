@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Detalle de Venta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Detalle de Venta</h1>
+  <nav><a class="button back" th:href="@{/ventas}">Volver</a></nav>
+  <div>
+    <p><strong>ID Venta:</strong> <span th:text="${venta.id}"></span></p>
+    <p><strong>Cliente:</strong> <span th:text="${clientesDisplay[venta.idCliente]} ?: ${venta.idCliente}"></span></p>
+    <p><strong>Fecha:</strong> <span th:text="${#temporals.format(venta.fecha, 'dd/MM/yyyy HH:mm')}"></span></p>
+    <p><strong>Estado:</strong> <span th:text="${venta.estado}"></span></p>
+    <p><strong>Total:</strong> <span th:text="'$ ' + ${#numbers.formatDecimal(venta.total, 0, 'POINT', 2, 'COMMA')}"></span></p>
+  </div>
+  <table>
+    <thead><tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+    <tbody>
+      <tr th:each="d : ${detalles}">
+        <td th:text="${productosDisplay[d.idProducto]}"></td>
+        <td th:text="'$ ' + ${#numbers.formatDecimal(d.precioUnitario, 0, 'POINT', 2, 'COMMA')}"></td>
+        <td th:text="${d.cantidad}"></td>
+        <td th:text="'$ ' + ${#numbers.formatDecimal(d.subtotal, 0, 'POINT', 2, 'COMMA')}"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

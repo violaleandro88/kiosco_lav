@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Nueva Venta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Nueva Venta</h1>
+  <nav><a class="button back" th:href="@{/ventas}">Volver</a></nav>
+  <form th:action="@{/ventas/guardar}" method="post">
+  <div>
+    <label>Cliente</label>
+    <select name="idCliente" required>
+      <option value="" disabled selected>-- Seleccione un cliente --</option>
+      <option th:each="c : ${clientes}"
+              th:value="${c.id}"
+              th:text="|${c.apellido} ${c.nombre} - DNI ${c.dni}|">
+        Cliente
+      </option>
+    </select>
+  </div>
+
+    <h3>Ítems (hasta 3 líneas)</h3>
+    <div>
+      <label>Producto</label>
+      <select name="productoId" required>
+        <option value="" disabled selected>-- Seleccione un producto --</option>
+        <option th:each="p : ${productos}"
+                th:value="${p.id}"
+                th:text="${p.nombre}">
+          Producto
+        </option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="1" value="1" required/>
+    </div>
+
+    <div>
+      <label>Producto</label>
+      <select name="productoId">
+        <option value="" disabled selected>-- Seleccione un producto --</option>
+        <option th:each="p : ${productos}"
+                th:value="${p.id}"
+                th:text="${p.nombre}">
+          Producto
+        </option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="0" value="0"/>
+    </div>
+
+    <div>
+      <label>Producto</label>
+      <select name="productoId">
+        <option value="" disabled selected>-- Seleccione un producto --</option>
+        <option th:each="p : ${productos}"
+                th:value="${p.id}"
+                th:text="${p.nombre}">
+          Producto
+        </option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="0" value="0"/>
+    </div>
+
+    <button class="button" type="submit">Guardar Venta</button>
+  </form>
+</div>
+</body>
+</html>

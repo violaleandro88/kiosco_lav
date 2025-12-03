@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Clientes</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Clientes</h1>
+  <nav>
+    <a class="button back" th:href="@{/}">Inicio</a>
+    <a class="button" th:href="@{/clientes/alta}">Nuevo Cliente</a>
+  </nav>
+  <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
+  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Nombre</th><th>DNI</th><th>Email</th><th>Teléfono</th><th>Activo</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+      <tr th:each="c : ${clientes}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.apellido + ', ' + c.nombre}"></td>
+        <td th:text="${c.dni}"></td>
+        <td th:text="${c.email}"></td>
+        <td th:text="${c.telefono}"></td>
+        <td th:text="${c.activo}"></td>
+        <td class="actions">
+          <a class="button edit" th:href="@{/clientes/editar(id=${c.id})}">Editar</a>
+          <a class="button delete" th:href="@{/clientes/eliminar(id=${c.id})}" onclick="return confirm('¿Eliminar cliente?')">Eliminar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

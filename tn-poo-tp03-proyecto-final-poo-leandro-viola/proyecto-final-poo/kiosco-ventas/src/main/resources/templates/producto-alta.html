@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Alta de Producto</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Nuevo Producto</h1>
+  <nav><a class="button back" th:href="@{/productos}">Volver</a></nav>
+  <form th:action="@{/productos/guardar}" method="post">
+    <div><label>Nombre</label><input type="text" name="nombre" required/></div>
+    <div><label>Precio compra</label><input type="number" step="0.01" name="precioCompra" required/></div>
+    <div><label>Precio venta</label><input type="number" step="0.01" name="precioVenta" required/></div>
+    <div><label>Stock</label><input type="number" name="stock" min="0" required/></div>
+    <button class="button" type="submit">Guardar</button>
+  </form>
+</div>
+</body>
+</html>

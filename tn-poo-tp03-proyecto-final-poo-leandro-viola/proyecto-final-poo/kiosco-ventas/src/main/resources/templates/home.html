@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio | Kiosco</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Kiosco - Gestión de Ventas</h1>
+    <nav>
+      <a class="button" th:href="@{/clientes}">Clientes</a>
+      <a class="button" th:href="@{/productos}">Productos</a>
+      <a class="button" th:href="@{/ventas}">Ventas</a>
+    </nav>
+    <div class="home-card">
+      <h2>Bienvenido/a</h2>
+      <p>Elegí una sección para comenzar.</p>
+      <div class="home-links">
+        <a class="button" th:href="@{/clientes}">Ir a Clientes</a>
+        <a class="button" th:href="@{/productos}">Ir a Productos</a>
+        <a class="button" th:href="@{/ventas}">Ir a Ventas</a>
+      </div>
+    </div>
+  </div>
+</body>
+<footer style="text-align: center; font-size: 12px; margin-top: 40px;">
+    Powered By Leandro Alberto Viola 2025
+</footer>
+</html>
