@@ -1,55 +1,23 @@
 🧾 Proyecto Final – Kiosco Ventas
 
-Programación Orientada a Objetos (POO)
+Sistema desarrollado con el modelo MVC aplicando Programación Orientada a Objetos.
 
-Este repositorio contiene el trabajo práctico final del módulo de Programación Orientada a Objetos.
-El objetivo del proyecto es completar las partes faltantes del sistema para que funcione correctamente, trabajando sobre una base ya creada y conectada en la nube.
+Este proyecto corresponde al trabajo práctico final del módulo de POO. El objetivo fue completar las partes faltantes del sistema para garantizar su funcionamiento, trabajando sobre una base de datos ya creada y conectada en la nube.
 
-✔️ Objetivo del trabajo
+📘 Conceptos técnicos aplicados
 
-Completar una entidad faltante del sistema.
+Modelo MVC — Organización en capas (Repositorio → Service → Controller) — Patrón de responsabilidad por capas — Validación de datos y manejo de flujos — Uso de plantillas existentes sin modificar vistas ni SQL — Integración con base de datos mediante abstracción y mapeo de entidades — Manejo de mensajes y redirecciones en controladores.
 
-Implementar lo necesario en su:
+🏦 Objetivo funcional del trabajo
 
-Repositorio
+Completar la entidad faltante del sistema e implementar su repositorio, servicio y controlador correspondiente, respetando la estructura de las demás entidades ya completas y sin modificar vistas, SQL ni configuración de la base.
 
-Service
+🛠️ Tecnologías y herramientas utilizadas
 
-Controller
+Java — Spring MVC — Spring JDBC con JdbcTemplate — RowMapper con expresiones lambda — MySQL en la nube como base de datos.
 
-No modificar el SQL, las vistas ni la configuración de la base.
+🔧 Mejoras respecto a lo visto en clase
 
-Guiarse por las demás entidades, que ya están completas.
-
-✔️ Tecnologías utilizadas
-
-Java
-
-Spring MVC
-
-Spring JDBC (JdbcTemplate)
-
-RowMapper con lambdas
-
-MySQL en la nube
-
-✔️ Cambios importantes respecto a clases previas
-JdbcTemplate
-
-Reemplaza el uso manual de DataSource.
-
-Maneja conexiones, prepared statements, parámetros, ejecución y cierre automático.
-
-Convierte SQLException en excepciones de Spring (DataAccessException).
-
-RowMapper
-
-Reemplaza el mapeo manual dentro del while.
-
-Usa lambdas para convertir cada fila en un objeto Java.
-
-Controllers
-
-Nuevas formas de manejar mensajes y redirecciones.
-
-Ejemplos explicados dentro de ClienteController.
+JdbcTemplate: reemplaza el uso manual de DataSource, administra conexiones, prepared statements, ejecución y cierre automático, y convierte SQLException en excepciones runtime (DataAccessException).
+RowMapper: simplifica el mapeo de filas, reemplazando el proceso manual dentro del while; permite convertir registros en objetos Java mediante lambdas.
+Controllers: incorporan un manejo más claro de mensajes y redirecciones, con ejemplos documentados en ClienteController.
